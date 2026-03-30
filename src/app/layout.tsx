@@ -27,16 +27,13 @@ export const metadata: Metadata = {
     url: "https://connect.com.br",
     siteName: "Connect",
     type: "website",
+    images: ["/og-image.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Connect — Agência de Marketing Digital",
     description: "Conectamos sua marca ao próximo nível. Marketing digital para empreendedores brasileiros no Brasil e no mundo.",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -46,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning style={{ overflowX: "hidden", maxWidth: "100vw" }}>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -57,7 +54,6 @@ export default function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-        style={{ overflowX: "hidden", maxWidth: "100vw", position: "relative" }}
       >
         {children}
         <Toaster />
