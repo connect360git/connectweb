@@ -27,11 +27,13 @@ export const metadata: Metadata = {
     url: "https://connect.com.br",
     siteName: "Connect",
     type: "website",
+    images: ["/og-image.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Connect — Agência de Marketing Digital",
     description: "Conectamos sua marca ao próximo nível. Marketing digital para empreendedores brasileiros no Brasil e no mundo.",
+    images: ["/og-image.jpg"],
   },
 };
 
