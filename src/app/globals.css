@@ -45,7 +45,7 @@
 
 :root {
   --radius: 0.625rem;
-  
+
   /* Backgrounds - Dark blue theme */
   --background: #0a192f;
   --foreground: #E5E5E5;
@@ -53,31 +53,31 @@
   --card-foreground: #E5E5E5;
   --popover: #151d2e;
   --popover-foreground: #E5E5E5;
-  
+
   /* Primary - Azul Ciano */
   --primary: #00A3FF;
   --primary-foreground: #000000;
-  
+
   /* Secondary */
   --secondary: #1a2538;
   --secondary-foreground: #E5E5E5;
-  
+
   /* Muted */
   --muted: #1a2538;
   --muted-foreground: #8A8A8A;
-  
+
   /* Accent */
   --accent: #0066FF;
   --accent-foreground: #ffffff;
-  
+
   /* Destructive */
   --destructive: #ff4444;
-  
+
   /* Borders */
   --border: #2a3a50;
   --input: #1a2538;
   --ring: #00A3FF;
-  
+
   /* Custom Colors */
   --accent-primary: #00A3FF;
   --accent-secondary: #0066FF;
@@ -89,14 +89,14 @@
   --text-highlight: #99DDFF;
   --surface: #151d2e;
   --surface2: #1a2538;
-  
+
   /* Charts */
   --chart-1: #00A3FF;
   --chart-2: #0066FF;
   --chart-3: #99DDFF;
   --chart-4: #C0C0C0;
   --chart-5: #8A8A8A;
-  
+
   /* Sidebar */
   --sidebar: #0a192f;
   --sidebar-foreground: #E5E5E5;
@@ -140,10 +140,18 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
   }
   body {
     @apply bg-background text-foreground;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
@@ -172,7 +180,8 @@
 
 @keyframes estrelasBrilho {
   0% { opacity: .7; }
-  25% { opacity: 1; filter: brightness(1.4) saturate(2); }
+
+25% { opacity: 1; filter: brightness(1.4) saturate(2); }
   50% { opacity: .6; }
   75% { opacity: 1; filter: brightness(1.9) saturate(2); }
   100% { opacity: .8; }
@@ -360,47 +369,63 @@
   animation: scroll-indicator 1.5s ease-in-out infinite;
 }
 
+/* Logos carousel — garante que o wrapper não cause overflow horizontal */
+.logos-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Stats Section — corrige whitespace-nowrap em mobile */
+@media (max-width: 639px) {
+  .stat-value-text {
+    white-space: normal;
+    word-break: break-word;
+    font-size: 1rem;
+  }
+}
+
 /* Touch device detection - hide cursor glow on touch devices */
 @media (hover: none) and (pointer: coarse) {
   .cursor-glow-effect {
     display: none !important;
   }
-  
+
   /* Enhanced touch effects for cards */
   .touch-card {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     outline: none;
   }
-  
+
   /* Efeito ao tocar (ativa instantaneamente) */
   .touch-card:focus {
     transform: scale(0.98);
     border-color: rgba(0, 163, 255, 0.5) !important;
     box-shadow: 0 0 30px rgba(0, 163, 255, 0.2) !important;
   }
-  
+
   /* Fallback para :active */
   .touch-card:active {
     transform: scale(0.98);
     border-color: rgba(0, 163, 255, 0.5) !important;
     box-shadow: 0 0 30px rgba(0, 163, 255, 0.2) !important;
   }
-  
+
   /* Service cards on touch */
   .service-card-touch:focus {
     transform: scale(0.98);
   }
-  
+
   .service-card-touch:focus img {
     transform: scale(1.05);
     filter: brightness(1.25);
   }
-  
+
   .service-card-touch:active {
     transform: scale(0.98);
   }
-  
+
   .service-card-touch:active img {
     transform: scale(1.05);
     filter: brightness(1.25);
@@ -408,6 +433,7 @@
 }
 
 /* Ensure hover effects work on touch devices */
+
 @media (hover: hover) and (pointer: fine) {
   .cursor-glow-effect {
     display: block;
